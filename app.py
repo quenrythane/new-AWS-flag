@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import random
 
 from pliki_python.open_poem import open_poem
+from pliki_python.my_wikipedia import *
 
 
 app=Flask(__name__)
@@ -52,8 +53,12 @@ def namiot_brudnopis():
         super_heroes=super_heroes,
         poem_lines=open_poem())
 
-
-
+@app.route('/random-hero')
+def random_hero():
+    heroes_list = collect_heroes_list("dane/super_heroes.json")
+    random_hero = draw_random_hero(heroes_list)
+    hero_name, img_url, summary_content = find_character_info(random_hero)
+    return render_template("random-hero.html", hero_name=hero_name, img_url=img_url, summary_content=summary_content) #, name=name, img=img, summary_content=summary_content)
 
 
 @app.route('/CV-pl')
