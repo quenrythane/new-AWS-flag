@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+import random
+
+from pliki_python.open_poem import open_poem
+
 
 app=Flask(__name__)
 
@@ -39,7 +43,17 @@ def namiot_mam_te_moc():
 def namiot_brudnopis():
     my_hero1 = "Kubuś Puchatek"
     my_hero2 = "Tygrysek"
-    return render_template("namiot/brudnopis.html", hero1= my_hero1 , hero2= my_hero2)
+    super_heroes = [my_hero1, my_hero2, 'Sowa']
+    random_hero = random.choice(super_heroes).upper()
+    return render_template("namiot/brudnopis.html",
+        hero1= my_hero1,
+        hero2= my_hero2,
+        random_hero=random_hero,
+        super_heroes=super_heroes,
+        poem_lines=open_poem())
+
+
+
 
 
 @app.route('/CV-pl')

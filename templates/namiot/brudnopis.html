@@ -11,12 +11,37 @@
         }
     </style>
 </head>
+<style>
+    body {
+        background-color: grey;
+    }
+</style>
 <body>
     <br>
     <br>
     <br>
+    <!--Pokazuje że używam 2 zmiennych w Flasku-->
     <h1> {{hero1}} </h1>
     <h1> {{hero2}} </h1>
+    <br>
+
+    <!-- Pokazuje, że używam funkcji random i za każdym odświeżeniem bohater będzie losowany-->
+    <h1> Random hero is: </h1>
+    <h1> {{random_hero}} </h1>
+    <br>
+
+    <!--w kodzie html używam pętli for (WTF?! -> ekstra! )-->
+    {% for super_hero in super_heroes %}
+    <p>{{super_hero}}</p>
+    {% endfor %}
+    <br>
+
+    <!-- ćwiczę to samo so u góry -->
+    {% for line in poem_lines %}
+        <p>{{line}}</p>
+    {% endfor %}
+
+
 
 
 
