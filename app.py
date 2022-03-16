@@ -7,6 +7,7 @@ from pliki_python.my_wikipedia import *
 
 app=Flask(__name__)
 
+# BASIC
 @app.route('/')
 def index():
     text = open('dane/xd.txt').read()
@@ -17,6 +18,7 @@ def xd():
     return render_template("xd.html")
 
 
+# FIRST SCRIPT
 @app.route('/password-generator')
 def password_generator():
     from pliki_python.password_generator import generate_password
@@ -27,6 +29,8 @@ def password_generator():
 def iframe():
     return render_template("iframe.html")
 
+
+# NAMIOT
 @app.route('/namiot')
 def namiot():
     return render_template("namiot/namiot.html")
@@ -34,7 +38,6 @@ def namiot():
 @app.route('/namiot/wykres-rubla')
 def namiot_wykres_rubla():
     return render_template("namiot/wykres-rubla.html")
-
 
 @app.route('/namiot/mam-te-moc')
 def namiot_mam_te_moc():
@@ -53,14 +56,17 @@ def namiot_brudnopis():
         super_heroes=super_heroes,
         poem_lines=open_poem())
 
+
+# RANDOM HERO
 @app.route('/random-hero')
 def random_hero():
     heroes_list = collect_heroes_list("dane/super_heroes.json")
     random_hero = draw_random_hero(heroes_list)
     hero_name, img_url, summary_content = find_character_info(random_hero)
-    return render_template("random-hero.html", hero_name=hero_name, img_url=img_url, summary_content=summary_content) #, name=name, img=img, summary_content=summary_content)
+    return render_template("random-hero.html", hero_name=hero_name, img_url=img_url, summary_content=summary_content)
 
 
+# CV
 @app.route('/CV-pl')
 def cv_pl():
     return render_template("cv-pl.html")
