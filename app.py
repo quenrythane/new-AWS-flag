@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import random
+# import cv2
 
 from pliki_python.open_poem import open_poem
 from pliki_python.my_wikipedia import *
@@ -7,11 +8,13 @@ from pliki_python.my_wikipedia import *
 
 app=Flask(__name__)
 
+
 # BASIC
 @app.route('/')
 def index():
     text = open('dane/xd.txt').read()
     return render_template("index.html", my_name=text)
+
 
 @app.route('/xd')
 def xd():
